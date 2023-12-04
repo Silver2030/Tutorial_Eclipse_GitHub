@@ -21,7 +21,7 @@ public class CalculadoraAvanzada {
 		Scanner in = new Scanner(System.in);
 		int suma;
 		
-		String texto=JOptionPane.showInputDialog("Escribe el operando probando :");
+		String texto=JOptionPane.showInputDialog("Escribe el operando: ");
 			suma = Integer.parseInt(texto);
 			return suma;
 	}
