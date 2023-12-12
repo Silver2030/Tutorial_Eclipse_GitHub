@@ -14,6 +14,7 @@ public class FlotaApp {
 		String[][] valor = new String[9][9];
 		ArrayList<String> barcos = new ArrayList<String>();
 		
+		
 		obj.crearreglas();
 		obj.mostrarreglas();
 		obj.creartablero();
@@ -21,23 +22,23 @@ public class FlotaApp {
 		do {
 		System.out.println("Introduce una casilla, primero letra despues numero");
 		res = in.next().charAt(0);
-		obj.setX(obj.letranum(Character.toString(res)));
+		obj.x.add(obj.letranum(Character.toString(res)));
 		num = in.nextInt();
-		obj.setY(num);
+		obj.y.add(num);
 		String posxy= obj.getX()+","+ obj.getY();
         System.out.println(posxy);
-		if((obj.getX() == 0)||((obj.getY()>11)&&(obj.getY()<1))) {
+		if((obj.x.get(intentos) == 0)||((obj.y.get(intentos)>10))) {
 			System.out.print("Respuesta invalida, por favor vuelta a intentarlo: ");
 		}else{
             boolean comprobacion = false;
             for(int i=0;i<barcos.size();i++){
                 String barcopos = barcos.get(i);
                 if(barcopos.contains(posxy)==true){
-                	tablero[posx][posy]="+";
+                	obj.valortablero(obj.x.get(intentos), obj.y.get(intentos), '+');
                     System.out.println("Bien has dado a un barco");
                     comprobacion=true;
-                    barcos.get(i).tocado(x, y);
-                    if(barcos.get(i).posiciones()==barcos.get(i).getTamano()){
+                    obj.tocado(obj.x.get(intentos), obj.y.get(intentos));
+                    if(barcos.get(i)==barcos.get(i)){
                         System.out.println("Hundido");
                         System.out.println("Has hundido un "+barcos.get(i).getNombre());
                         for(int o=0;o<barcos.get(i).posicionesx.size();o++){
@@ -49,7 +50,7 @@ public class FlotaApp {
             }
             if(comprobacion==false){
                 System.out.println("Agua");
-                obj.setTablero();
+                obj.valortablero(obj.x.get(intentos), obj.y.get(intentos), '-');
             }
         }
         obj.mostartablero();

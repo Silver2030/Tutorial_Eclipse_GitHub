@@ -1,33 +1,45 @@
 package hundirLaFlota;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Flota {
-	public int x;
-    public int y;
+    public ArrayList<Integer> x = new ArrayList<Integer>();
+    public ArrayList<Integer> y = new ArrayList<Integer>();
     private String posicion;
 	private String[][] tablero = new String[11][11];
 	private String[] reglas = new String[11];
 	private ArrayList<String> ocupadas = new ArrayList<String>();
 	private ArrayList<String> repetidas = new ArrayList<String>();
 	private ArrayList<String> posfinal = new ArrayList<String>();
+	private int tamano;
+	private String nombre;
+	    
 	
 	public Flota() {
 		super();
 	}
 	
-	public Flota(int x, int y, String[][] tablero, String[] reglas, ArrayList<String> ocupadas,
-			ArrayList<String> repetidas, ArrayList<String> posfinal) {
+	public Flota(ArrayList<Integer> x, ArrayList<Integer> y, String posicion, String[][] tablero, String[] reglas,
+			ArrayList<String> ocupadas, ArrayList<String> repetidas, ArrayList<String> posfinal, int tamano,
+			String nombre) {
 		super();
 		this.x = x;
 		this.y = y;
+		this.posicion = posicion;
 		this.tablero = tablero;
 		this.reglas = reglas;
 		this.ocupadas = ocupadas;
 		this.repetidas = repetidas;
 		this.posfinal = posfinal;
+		this.tamano = tamano;
+		this.nombre = nombre;
 	}
+	
+	public void barco(int tamano, String nombre, String posicion){
+        this.tamano = tamano;
+        this.nombre = nombre;
+        this.posicion=posicion;
+		}
 
 	public void creartablero() {
 			int letras=65;
@@ -140,6 +152,10 @@ public class Flota {
         generarposiciones(x,y,orientado,logitud);
     }
     
+    public void valortablero(int x, int y, char z){
+    	tablero[x][y] = "z";
+    }
+    
     public void generarposiciones(int x, int y, String orientado, int longitud){
         String posicionesfinal="";
         int conterr=0;
@@ -205,20 +221,24 @@ public class Flota {
             return false;
         }
     }
+    
+    public int posiciones(){
+        return this.x.size();
+    }
 
-	public int getX() {
+	public ArrayList<Integer> getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(ArrayList<Integer> x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public ArrayList<Integer> getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(ArrayList<Integer> y) {
 		this.y = y;
 	}
 
@@ -242,13 +262,30 @@ public class Flota {
 		return posicion;
 	}
 
+	public int getTamano() {
+		return tamano;
+	}
+
+	public void setTamano(int tamano) {
+		this.tamano = tamano;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
 	
+	public void tocado(int fila,int columna){
+        this.x.add(fila); 
+        this.y.add(columna);
+    }
 	
-	
-
-
 
 }
