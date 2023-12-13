@@ -13,18 +13,20 @@ public class Flota {
 	private ArrayList<String> posfinal = new ArrayList<String>();
 	private int tamano;
 	private String nombre;
+	public Flota (int tamano,String nombre,String posicion) {
+        this.tamano = tamano;
+        this.nombre = nombre;
+        this.posicion=posicion;
+	}
 	    
-	
 	public Flota() {
 		super();
 	}
 	
-	public Flota(ArrayList<Integer> x, ArrayList<Integer> y, String posicion, String[][] tablero, String[] reglas,
+	public Flota(String posicion, String[][] tablero, String[] reglas,
 			ArrayList<String> ocupadas, ArrayList<String> repetidas, ArrayList<String> posfinal, int tamano,
 			String nombre) {
 		super();
-		this.x = x;
-		this.y = y;
 		this.posicion = posicion;
 		this.tablero = tablero;
 		this.reglas = reglas;
@@ -35,11 +37,20 @@ public class Flota {
 		this.nombre = nombre;
 	}
 	
-	public void barco(int tamano, String nombre, String posicion){
-        this.tamano = tamano;
-        this.nombre = nombre;
-        this.posicion=posicion;
-		}
+	  public void barco(int tamano,String nombre,String posicion) {
+	        this.tamano = tamano;
+	        this.nombre = nombre;
+	        this.posicion=posicion;
+	    }
+	
+	public void tocado(int fila,int columna){
+        this.x.add(fila); 
+        this.y.add(columna);
+    }
+	
+	public int posicion(){
+        return this.x.size();
+    }
 
 	public void creartablero() {
 			int letras=65;
@@ -281,11 +292,37 @@ public class Flota {
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
+
+
+	public ArrayList<String> getOcupadas() {
+		return ocupadas;
+	}
+
+
+	public void setOcupadas(ArrayList<String> ocupadas) {
+		this.ocupadas = ocupadas;
+	}
+
+
+	public ArrayList<String> getRepetidas() {
+		return repetidas;
+	}
+
+
+	public void setRepetidas(ArrayList<String> repetidas) {
+		this.repetidas = repetidas;
+	}
+
+
+	public ArrayList<String> getPosfinal() {
+		return posfinal;
+	}
+
+
+	public void setPosfinal(ArrayList<String> posfinal) {
+		this.posfinal = posfinal;
+	}
 	
-	public void tocado(int fila,int columna){
-        this.x.add(fila); 
-        this.y.add(columna);
-    }
 	
 
 }

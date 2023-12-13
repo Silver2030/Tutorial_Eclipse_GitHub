@@ -3,6 +3,8 @@ package hundirLaFlota;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
+
 public class FlotaApp {
 
 	public static void main(String[] args) {
@@ -12,13 +14,32 @@ public class FlotaApp {
 		int num, intentos = 0;
 		String[] letras = {"A","B","C","D","E","F","G","H"};
 		String[][] valor = new String[9][9];
-		ArrayList<String> barcos = new ArrayList<String>();
-		
+		ArrayList<Flota> barcos = new ArrayList<Flota>();
 		
 		obj.crearreglas();
 		obj.mostrarreglas();
 		obj.creartablero();
 		obj.mostartablero();
+		
+		for (int i=0;i<2;i++){
+            obj.genenarbarcos(3);
+            Flota barc=new Flota(3,"Acorazado",obj.getPosfinal().get(i));
+            barcos.add(barc);
+        }
+        for (int i=2;i<5;i++){
+            obj.genenarbarcos(2);
+            Flota barc=new Flota(2,"Buque",obj.getPosfinal().get(i));
+            barcos.add(barc);
+        }
+        for (int i=5;i<9;i++){
+        	obj.genenarbarcos(1);
+        	Flota barc=new Flota(1,"Submarino",obj.getPosfinal().get(i));
+            barcos.add(barc);
+        }
+        obj.genenarbarcos(4);
+        Flota barc=new Flota(4,"Portaavion",obj.getPosfinal().get(9));
+        barcos.add(barc);
+        
 		do {
 		System.out.println("Introduce una casilla, primero letra despues numero");
 		res = in.next().charAt(0);
