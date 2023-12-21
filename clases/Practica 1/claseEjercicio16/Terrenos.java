@@ -42,7 +42,7 @@ public class Terrenos {
 		return numd;
 	}
 	
-	public void descuento() {
+	public void descuento() { /* Calculo del descuento correspondiente */
 		double[] desc = {0.95, 0.90, 0.85, 0.80, 0.75};
 		int [] lim1 = {120,151,171,201,251};
 		int [] lim2 = {150,170,200,250,10000};
