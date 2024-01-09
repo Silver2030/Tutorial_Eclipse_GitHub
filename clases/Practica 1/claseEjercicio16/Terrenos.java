@@ -45,24 +45,24 @@ public class Terrenos {
 	public void descuento() { /* Calculo del descuento correspondiente */
 		double[] desc = {0.95, 0.90, 0.85, 0.80, 0.75};
 		int [] lim1 = {120,151,171,201,251};
-		int [] lim2 = {150,170,200,250,10000};
-		descuento = 1;
+		int [] lim2 = {150,170,200,250,this.medida+1};
+		this.descuento = 1;
 		 for(int i=0;i<desc.length;i++){
-			 if((medida >= lim1[i])&&(medida<=lim2[i])) {
-				 descuento = desc[i];
+			 if((this.medida >= lim1[i])&&(this.medida<=lim2[i])) {
+				 this.descuento = desc[i];
 			 }
 		 }
 	}
 	
 	public double descuentotal() { /* Valor final del descuento */
 		double resultado;
-		resultado = medida * valorm2 * (1 - descuento);
+		resultado = this.medida * this.valorm2 * (1 - this.descuento);
 		return resultado;
 	}
 	
 	public double resultadototal() { /* Valor final del terreno */
 		double resultado;
-		resultado = medida * valorm2 - descuentotal();
+		resultado = this.medida * this.valorm2 - descuentotal();
 		return resultado;
 	}
 

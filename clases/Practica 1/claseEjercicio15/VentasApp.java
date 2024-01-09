@@ -6,8 +6,8 @@ public class VentasApp {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		int u, n = -1, c = 1, p, z, q;
-		String res, apo;
+		int u, n = -1, c = 1, p, z;
+		String res;
 		System.out.print("Introduce cantidad de productos que se quiere registrar: ");
 		u = in.nextInt();
 		System.out.println();
@@ -37,12 +37,12 @@ public class VentasApp {
 		}
 		
 		do {
-			c = 1;
+			
 			for(int i = 0; i < obj.length; i++) { /* Mostrar todos los artículos y sus datos */
 				System.out.println("Árticulo Nº" + c +") " + obj[i].toString());
 				c++;
 			}
-			
+			c = 1;
 		
 		System.out.println(); 
 		System.out.println("1. Venta");
@@ -79,19 +79,20 @@ public class VentasApp {
 						p = in.nextInt();
 					}
 					System.out.println();
-					obj[n].setStock(obj[n].getStock() - c); /* Reducir el stock del artículo seleccionado */
+					obj[n].venta(obj[n].getStock(), c); /* Reducir el stock del artículo seleccionado */
 					cambio_optimo(p, obj[n].pagototal(c)); /* Mostrar el vuelto del pago */
 					System.out.println();
 					System.out.print("Venta realizada");
 					System.out.println();
 							
 				}else System.out.print("La cantidad a vender excede a la disponible, disponible: " + obj[n].getStock());
+				System.out.println();
 			break;
 			case 2:
 				in.nextLine();
 				System.out.println();
 				while(n == -1) {
-					System.out.print("Árticulo vendido: ");
+					System.out.print("Árticulo comprado: ");
 					res = in.nextLine();
 					System.out.println();
 					for(int i = 0; i < obj.length; i++) { /* Compara String ingresado con todos los nombres de artículos 
@@ -104,7 +105,7 @@ public class VentasApp {
 				System.out.print("Cantidad comprada: ");
 				c = in.nextInt();
 				System.out.println();
-				obj[n].setStock(obj[n].getStock() + c); /* Aumentar el stock del artículo seleccionado */
+				obj[n].compra(obj[n].getStock(), c); /* Aumentar el stock del artículo seleccionado */
 				System.out.print("Compra realizada");
 				System.out.println();
 			break;
@@ -112,6 +113,7 @@ public class VentasApp {
 				System.out.print("Opcion introducida erronea, por favor vuelva a intentarlo");
 			break;
 			}
+			n = -1;
 			System.out.println();	
 		}while (z != '3');
 

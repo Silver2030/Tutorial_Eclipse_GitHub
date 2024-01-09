@@ -41,17 +41,25 @@ public class Ventas {
 		return num;
 	}
 	
-	public int pagototal(int cantidad) {
+	public void venta(int valortot, int resta) { /* Resta de lo vendido al stock */
+		this.stock =  valortot - resta;
+	}
+	
+	public void compra(int valortot, int suma) { /* Suma de lo comprado al stock */
+		this.stock =  valortot + suma;
+	}
+	
+	public int pagototal(int cantidad) { /* Calculo del valor total efectuado el descuento */
 		int total = 0;
-		switch (oferta) {
+		switch (this.oferta) {
 		case 'X':
-			total = cantidad * precio - 5;
+			total = cantidad * this.precio - 5;
 			break;
 		case 'Y':
-			total = cantidad * precio - 3;
+			total = cantidad * this.precio - 3;
 			break;
 		case 'Z':
-			total = cantidad * precio - 1;
+			total = cantidad * this.precio - 1;
 			break;
 		}
 		return total;
@@ -93,8 +101,5 @@ public class Ventas {
 	public String toString() {
 		return "Nombre: " + nombre + " Precio: " + precio + " Oferta: " + oferta + " Stock: " + stock;
 	}
-	
-	
-	
 	
 }
